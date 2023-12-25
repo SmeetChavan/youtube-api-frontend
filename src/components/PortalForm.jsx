@@ -28,8 +28,6 @@ const PortalForm = ({handleClose}) => {
       const response = await axios.post("https://send-email-backend-one.vercel.app/sendemail" , {
         name,
         phone
-      } , {
-        withCredentials: true
       });
       toast.dismiss();
       toast.success("Request Sent!");
