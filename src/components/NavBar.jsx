@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import logo from '../assets/anchor-logo.png';
+import logo from '../assets/logo-2.jpeg';
 import phone from '../assets/phone.png';
 import {useLocation , useNavigate} from 'react-router-dom';
 import PortalForm from './PortalForm';
@@ -29,18 +29,18 @@ const NavBar = () => {
 
             <div className='flex justify-between max-sm:flex-col max-sm:gap-10'>
 
-                <div className='flex gap-3 justify-center hover:cursor-pointer' onClick={handleNav}>
+                <div className='flex gap-1 justify-center items-center hover:cursor-pointer' onClick={handleNav}>
 
                     <img
                         src={logo}
                         alt="Logo"
-                        width={30}
-                        height={30}
+                        width={60}
+                        height={60}
                         className='object-contain'
                     />
 
                     <div className='flex gap-2'>
-                        <h1 className='text-3xl'>anchors</h1>
+                        <h1 className='text-3xl'>Smeet</h1>
                         <div>
                             <h2 className='border rounded-md bg-[#CCCCCC] text-black text-xs p-[1px]'>Beta</h2>
                         </div>
@@ -48,7 +48,7 @@ const NavBar = () => {
 
                 </div>
 
-                <div className={`flex items-center justify-center gap-2 border border-slate-400 px-4 py-2 rounded-xl hover:cursor-pointer ${location.pathname.includes("dashboard") ? "" : "hidden"}`} onClick={handleOpen}>
+                <div className={`flex items-center justify-center gap-2 border border-slate-400 px-4 py-2 rounded-xl hover:cursor-pointer ${location.pathname.includes("dashboard") ? "" : "hidden"} max-w-md max-sm:mx-auto`} onClick={handleOpen}>
 
                     <img
                         src={phone}

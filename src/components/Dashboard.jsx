@@ -39,7 +39,7 @@ const Dashboard = () => {
 
             <div className='flex flex-col gap-6'>
 
-              <div className='bg-[#707070] flex gap-2 px-4 py-2 rounded-md max-w-[200px]'>
+              <div className='bg-[#707070] flex gap-2 px-4 py-2 rounded-md max-w-[200px] mx-auto'>
 
                 <img 
                   src={badge}
@@ -67,9 +67,9 @@ const Dashboard = () => {
 
             </div>
 
-            <div className='flex flex-col gap-3'>
+            <div className='flex flex-col gap-3 max-sm:mx-auto'>
 
-              <h2 className='text-2xl font-semibold max-w-lg'>{data.title}</h2>
+              <h2 className='text-2xl font-semibold max-w-lg max-sm:mb-10 max-sm:text-center'>{data.title}</h2>
 
               <div className='flex gap-2'>
 
@@ -125,9 +125,9 @@ const Dashboard = () => {
 
               <p className='sm:text-[2.5rem] text-[2rem] font-bold whitespace-nowrap'>₹ {earning}</p>
 
-              <button className='bg-white rounded-xl p-2'>
-                blank
-              </button>
+              <div className='bg-white rounded-xl p-2 hover:cursor-pointer'>
+                <p className='text-black text-center font-bold text-sm uppercase leading-6'>Your earning</p>
+              </div>
 
             </div>
 

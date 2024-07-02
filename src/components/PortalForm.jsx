@@ -6,6 +6,9 @@ const PortalForm = ({handleClose}) => {
 
   const [name , setName] = useState("");
   const [phone , setPhone] = useState("");
+  const [address , setAddress] = useState("");
+
+  const [loading , setLoading] = useState(false);
 
   const handleOnClose = (e) => {
 
@@ -14,21 +17,29 @@ const PortalForm = ({handleClose}) => {
 
   const handleRequest = async () => {
 
-    if(!name || !phone){
+    if(loading){
+      return;
+    }
+    
+    if(!name || !phone || !address){
       return toast.error("No empty fields allowed");
     }
-
+    
     if(phone.length !== 10){
       return toast.error("Only Indian numbers allowed without prefix");
     }
-
+    
     try {
+
+      setLoading(true);
 
       toast.loading("Requesting..");
       const response = await axios.post("https://send-email-backend-one.vercel.app/sendemail" , {
         name,
-        phone
+        phone,
+        address
       });
+
       toast.dismiss();
       toast.success("Request Sent!");
 
@@ -40,6 +51,10 @@ const PortalForm = ({handleClose}) => {
       toast.dismiss();
       toast.error("An error occured");
       console.log(error);
+      // console.log(error.response.data);
+    }
+    finally{
+      setLoading(false);
     }
   }
 
@@ -61,11 +76,14 @@ const PortalForm = ({handleClose}) => {
           <div>
             <input type="number" placeholder="Mobile number" className='p-2 bg-transparent rounded-md border border-slate-500 focus:outline-none w-full' value={phone} onChange={(e) => setPhone(e.target.value)} />
           </div>
+          <div>
+            <input type="email" placeholder="Email address" className='p-2 bg-transparent rounded-md border border-slate-500 focus:outline-none w-full' value={address} onChange={(e) => setAddress(e.target.value)} />
+          </div>
 
         </div>
 
         <div className='bg-white text-black rounded-2xl px-2 py-2 text-center' onClick={handleRequest}>
-          <button>Request a call back</button>
+          <button disabled={loading}>Request a call back</button>
         </div>
 
       </div>
